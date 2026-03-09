@@ -3,244 +3,448 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vexilla - Autonomous AI IT Support | Enterprise & HomeBase</title>
+    <title>1saa | The Sovereign Exchange | Private Biller & Concierge</title>
     <style>
-        /* CORE CSS - VEXILLA BRAND PALETTE */
+        /* CORE RESET & TYPOGRAPHY */
         :root {
-            --bg-black: #0a0a0a;          /* Deep Black Background */
-            --vexilla-blue: #007bff;      /* Primary Vexilla Blue */
-            --vexilla-cyan: #00f2fe;      /* Accent Cyan (from logo) */
-            --text-main: #e0e0e0;         /* Soft Gray Text (easy on eyes) */
-            --text-muted: #a0a0a0;        /* Disabled/Muted Text */
-            --white: #ffffff;
-            --font-stack: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            --white: #FFFFFF;
+            --black: #000000;
+            --body-font: 'Montserrat', sans-serif; /* Clean Minimalist Sans-Serif */
+            --header-font: 'Playfair Display', serif; /* Elegant Classic Serif */
         }
 
-        /* RESET & LAYOUT */
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
         body {
-            background-color: var(--bg-black);
-            color: var(--text-main);
-            font-family: var(--font-stack);
-            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--white);
+            color: var(--black);
+            font-family: var(--body-font);
+            font-weight: 300;
+            line-height: 1.8;
             overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
         }
 
-        /* THE HERO CONTAINER */
-        .vexilla-hero {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh; /* Full screen height */
-            padding: 40px 20px;
-            text-align: center;
-            position: relative;
+        h1, h2, h3, h4 {
+            font-family: var(--header-font);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin: 0;
         }
 
-        /* ABSTRACT BACKGROUND NETWORK EFFECT */
-        .vexilla-hero::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: 
-                radial-gradient(circle at 20% 30%, rgba(0, 123, 255, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, rgba(0, 242, 254, 0.1) 0%, transparent 50%);
-            z-index: 1;
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: opacity 0.3s ease;
         }
 
-        /* LOGO STYLING */
-        .hero-logo {
-            max-width: 280px; /* Adjust based on your image file */
-            height: auto;
-            margin-bottom: 40px;
-            z-index: 10;
-            filter: drop-shadow(0 0 15px rgba(0, 242, 254, 0.3)); /* Subtle glow matching logo */
+        a:hover {
+            opacity: 0.7;
         }
 
-        /* HEADLINE & SUBHEAD */
-        .hero-content {
-            max-width: 850px;
-            z-index: 10;
-            margin-bottom: 60px;
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
 
-        .hero-headline {
-            font-size: 3.5rem; /* Large and authoritative */
-            font-weight: 800;
-            letter-spacing: -1.5px;
-            color: var(--white);
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, var(--white) 60%, var(--vexilla-cyan));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-subhead {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            font-weight: 400;
-            max-width: 650px;
+        /* SECTION UTILITIES */
+        .section {
+            padding: 120px 20px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        /* THE TWO-PATH FORK (ENTERPRISE vs HOME) */
-        .hero-fork {
+        .container {
+            width: 100%;
+        }
+
+        /* 1. NAV & LOGO */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: var(--white);
+            z-index: 1000;
+            border-bottom: 1px solid #EEEEEE;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+        }
+
+        .logo-container {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--black);
+            font-family: var(--header-font);
+        }
+
+        .nav-links {
             display: flex;
             gap: 30px;
-            z-index: 10;
-            width: 100%;
-            max-width: 900px;
-            justify-content: center;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        .fork-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            padding: 40px;
-            flex: 1;
-            transition: all 0.3s ease;
-            text-align: left;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .fork-card:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: var(--vexilla-blue);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 123, 255, 0.2);
-        }
-
-        .fork-card h3 {
-            font-size: 1.5rem;
-            color: var(--white);
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        .fork-card p {
-            color: var(--text-muted);
-            font-size: 1rem;
-            margin-bottom: 30px;
-            min-height: 48px; /* Keeps buttons aligned */
-        }
-
-        /* BUTTON STYLING */
-        .vexilla-btn {
-            display: inline-block;
-            padding: 12px 28px;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.2s ease;
-            font-size: 1rem;
-            border: 2px solid transparent;
-        }
-
-        /* Primary Button (Enterprise) */
-        .btn-enterprise {
-            background-color: var(--vexilla-blue);
-            color: var(--white);
-        }
-
-        .btn-enterprise:hover {
-            background-color: var(--white);
-            color: var(--bg-black);
-        }
-
-        /* Secondary Button (HomeBase) */
-        .btn-homebase {
-            background-color: transparent;
-            border-color: rgba(255, 255, 255, 0.3);
-            color: var(--white);
-        }
-
-        .btn-homebase:hover {
-            border-color: var(--vexilla-cyan);
-            color: var(--vexilla-cyan);
-            box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
-        }
-
-        /* LIVE NETWORK STATUS INDICATOR (FUTURISTIC TOUCH) */
-        .network-status {
-            position: absolute;
-            bottom: 30px;
-            left: 30px;
+        /* 2. HERO SECTION */
+        #hero {
+            height: 100vh;
             display: flex;
+            justify-content: center;
             align-items: center;
-            gap: 10px;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 8px 15px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            z-index: 10;
+            text-align: center;
+            padding: 0 20px;
         }
 
-        .status-dot {
-            width: 10px;
-            height: 10px;
-            background-color: #28a745; /* Green for healthy */
-            border-radius: 50%;
-            box-shadow: 0 0 10px #28a745;
-            animation: pulse 2s infinite;
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.2); opacity: 0.7; }
-            100% { transform: scale(1); opacity: 1; }
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
         }
 
-        /* MOBILE RESPONSIVENESS */
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            border: 1px solid var(--black);
+            background-color: var(--white);
+            color: var(--black);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: var(--black);
+            color: var(--white);
+        }
+
+        /* 3. MISSION SECTION */
+        #mission {
+            background-color: var(--white);
+            text-align: center;
+        }
+
+        .mission-header {
+            max-width: 800px;
+            margin: 0 auto 80px;
+        }
+
+        .mission-header h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .mission-details {
+            display: flex;
+            gap: 60px;
+            justify-content: center;
+            text-align: left;
+        }
+
+        .mission-detail-item {
+            flex: 1;
+            max-width: 350px;
+        }
+
+        .mission-detail-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        /* 4. TIERS / THE ENGAGEMENT LIST */
+        #tiers {
+            background-color: #FAFAFA; /* Very light subtle gray for contrast */
+            border-top: 1px solid #EEEEEE;
+        }
+
+        .tiers-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .tiers-header h2 {
+            font-size: 2.8rem;
+        }
+
+        .tiers-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .tier-card {
+            background-color: var(--white);
+            border: 1px solid var(--black);
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+        }
+
+        .tier-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .tier-totem {
+            font-size: 3rem; /* Placeholder for Totem Art */
+            margin-bottom: 30px;
+            font-weight: 900;
+            color: var(--black);
+        }
+
+        /* Placeholders for the Black Obsidian Totem Art */
+        .totem-1::before { content: '■'; } /* The Monolith */
+        .totem-2::before { content: 'Ψ'; } /* The Gauntlet */
+        .totem-compass::before { content: '⊕'; } /* The Compass Aegis */
+        .totem-apex::before { content: 'Λ'; } /* The Apex Crown */
+
+        .tier-name {
+            font-family: var(--header-font);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .tier-price {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        .tier-benefits {
+            font-size: 1rem;
+            margin-bottom: 40px;
+            flex-grow: 1;
+        }
+
+        .tier-benefits li {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .tier-benefits li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--black);
+        }
+
+        .tier-cta {
+            width: 100%;
+            text-align: center;
+        }
+
+        /* 5. CLIENTELE & EVENTS */
+        #events {
+            text-align: center;
+        }
+
+        .event-header h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .event-frequencies {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* 6. FOOTER */
+        footer {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 2.5rem;
+            font-family: var(--header-font);
+            margin-bottom: 20px;
+        }
+
+        .footer-quote {
+            font-family: var(--header-font);
+            font-style: italic;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            opacity: 0.8;
+        }
+
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+        }
+
+        .copyright {
+            font-size: 0.8rem;
+            opacity: 0.6;
+        }
+
+        /* MOBILE RESPONSIVE */
         @media (max-width: 768px) {
-            .hero-headline { font-size: 2.5rem; }
-            .hero-fork { flex-direction: column; gap: 20px; }
-            .fork-card { padding: 30px; }
-            .hero-logo { max-width: 220px; }
-            .network-status { position: static; margin-top: 40px; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .mission-details { flex-direction: column; align-items: center; }
+            .tiers-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; } /* Hide full nav on mobile */
+            .section { padding: 80px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <section class="vexilla-hero">
-        
-        <img src="logo-black.png" alt="Vexilla Autonomous AI IT Support Logo" class="hero-logo">
+    <header>
+        <nav>
+            <div class="logo-container">
+                1saa
+            </div>
+            <ul class="nav-links">
+                <li><a href="#mission">Mission</a></li>
+                <li><a href="#tiers">The Engagement</a></li>
+                <li><a href="#events">Frequencies</a></li>
+                <li><a href="#login">Access</a></li>
+            </ul>
+        </nav>
+    </header>
 
+    <section id="hero" class="section">
         <div class="hero-content">
-            <h1 class="hero-headline">The World’s First Self-Healing IT Infrastructure.</h1>
-            <p class="hero-subhead">
-                Vexilla is the proactive AI agent that predicts, diagnoses, and fixes Windows and macOS issues before you even notice them. Available for Enterprise Networks and HomeBase users.
-            </p>
+            <h1>The Professionalism of Danger.<br>The Discretion of the Sovereign.</h1>
+            <p>1saa is a high-integrity private acquisition exchange for the collector who values the perfect fit. We don't sell to everyone; we curate for the few.</p>
+            <a href="#tiers" class="cta-button">View The Engagement</a>
         </div>
-
-        <div class="hero-fork">
-            
-            <div class="fork-card">
-                <h3>Vexilla Enterprise</h3>
-                <p>Autonomous Site Reliability Engineering for corporate networks. Zero-click resolution, predictive hardware alerts, and immutable audit logs.</p>
-                <a href="#enterprise-pricing" class="vexilla-btn btn-enterprise">Secure My Business</a>
-            </div>
-
-            <div class="fork-card">
-                <h3>Vexilla HomeBase</h3>
-                <p>Your "Digital Handyman" for home users and families. Jargon-free diagnostics and one-click PC/Mac optimization.</p>
-                <a href="#homebase-signup" class="vexilla-btn btn-homebase">Protect My Home</a>
-            </div>
-
-        </div>
-
-        <div class="network-status">
-            <div class="status-dot"></div>
-            <span>Vexilla Core AI: <span style="color:var(--white);">Operational</span></span>
-        </div>
-
     </section>
+
+    <section id="mission" class="section">
+        <div class="container">
+            <div class="mission-header">
+                <h2>A New Standard of Integrity</h2>
+                <p>We are changing the way discretion is defined in the firearm exchange. Your lifestyle is structured around high-integrity choices—your acquisition partner should mirror that standard.</p>
+            </div>
+            <div class="mission-details">
+                <div class="mission-detail-item">
+                    <h4>The Private Biller</h4>
+                    <p>We serve as your dedicated procurement agent. Every transaction is handled with the professionalism of a private banking relationship.</p>
+                </div>
+                <div class="mission-detail-item">
+                    <h4>Bespoke Logistics</h4>
+                    <p>Our goal is to create unique, honest professional paths for our agents and unique, high-security acquisition paths for our clients. Integrity in every delivery.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tiers" class="section">
+        <div class="container">
+            <div class="tiers-header">
+                <h2>The Sovereign Exchange</h2>
+                <p>Access to our private inventory and global sourcing network is granted exclusively through our tiered engagement model.</p>
+            </div>
+            <div class="tiers-grid">
+                
+                <div class="tier-card">
+                    <div class="tier-totem totem-1"></div> <h3 class="tier-name">Basic</h3>
+                    <p class="tier-price">$49.95 / MONTHLY</p>
+                    <ul class="tier-benefits">
+                        <li>Gateway to Ample Supply (Ammunition Marketplace)</li>
+                        <li>5% Discount on Bulk Ammunition Orders</li>
+                        <li>Monthly Tactical Frequency Newsletter</li>
+                        <li>1saa Safety Waiver Activation</li>
+                    </ul>
+                    <a href="#apply" class="cta-button tier-cta">Request Entry</a>
+                </div>
+
+                <div class="tier-card">
+                    <div class="tier-totem totem-2"></div> <h3 class="tier-name">Silver Claw</h3>
+                    <p class="tier-price">$199.00 / MONTHLY</p>
+                    <ul class="tier-benefits">
+                        <li>The Professional Transition</li>
+                        <li>Private Acquisition of Handguns</li>
+                        <li>10% Ammunition Discount</li>
+                        <li>Invitation to Local Community Non-Profit Events</li>
+                        <li>SecurityaPP Verification Sync</li>
+                    </ul>
+                    <a href="#apply" class="cta-button tier-cta">Begin Acquisition</a>
+                </div>
+
+                <div class="tier-card">
+                    <div class="tier-totem totem-compass"></div> <h3 class="tier-name">Golden Claw</h3>
+                    <p class="tier-price">$550.00 / MONTHLY</p>
+                    <ul class="tier-benefits">
+                        <li>Global Sourcing & Collective Mastery</li>
+                        <li>Imported Firearm Acquisition Priority</li>
+                        <li>20% Ammunition Discount</li>
+                        <li>Designated Private Purchase Agent</li>
+                        <li>Quarterly Ballroom Level Networking Galas</li>
+                    </ul>
+                    <a href="#apply" class="cta-button tier-cta">Engage Agent</a>
+                </div>
+
+                <div class="tier-card">
+                    <div class="tier-totem totem-apex"></div> <h3 class="tier-name">Golden God</h3>
+                    <p class="tier-price">$2,500.00 / MONTHLY</p>
+                    <ul class="tier-benefits">
+                        <li>The Sovereign Exchange</li>
+                        <li>**White-Glove Private Arm Delivery**</li>
+                        <li>First-Right-of-Refusal on Rare Imports</li>
+                        <li>Highest Ammo Priority Allocation</li>
+                        <li>VIP Ballroom Table & Private Consultation</li>
+                        <li>Marine-Mantle™ Integration</li>
+                    </ul>
+                    <a href="#apply" class="cta-button tier-cta">Claim Sovereign Status</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="events" class="section">
+        <div class="container">
+            <div class="event-header">
+                <h2>The Frequencies</h2>
+                <p>We believe in doing good within our community. The 1saa club organizes exclusive, curated events—from private briefings to ballroom galas—focused on high-integrity networking and charitable community initiatives.</p>
+            </div>
+            <div class="event-frequencies">
+                <p>Only the cool ones, organized by us.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">1saa</div>
+            <p class="footer-quote">"Discretion is the ultimate luxury. We don't sell guns; we curate the lifestyle."</p>
+            <ul class="footer-nav">
+                <li><a href="#privacy">Privacy Shield</a></li>
+                <li><a href="#terms">Terms</a></li>
+                <li><a href="#contact">Contact Agent</a></li>
+                <li><a href="#sam">SAM.gov</a></li>
+            </ul>
+            <p class="copyright">&copy; 2026 1st Guns And Ammo LLC. A Subsidiary of Global Citizen Joe LLC. All Rights Reserved.</p>
+        </div>
+    </footer>
 
 </body>
 </html>
