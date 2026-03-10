@@ -3,447 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1saa | The Sovereign Exchange | Private Biller & Concierge</title>
+    <title>1saa | Private Biller & Sovereign Exchange</title>
     <style>
-        /* CORE RESET & TYPOGRAPHY */
         :root {
             --white: #FFFFFF;
             --black: #000000;
-            --body-font: 'Montserrat', sans-serif; /* Clean Minimalist Sans-Serif */
-            --header-font: 'Playfair Display', serif; /* Elegant Classic Serif */
+            --gold: #D4AF37; /* Royal Gold accent */
+            --silver: #C0C0C0; /* Sleek Silver accent */
+            --off-white: #FBFBFB;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap');
 
         body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--white);
-            color: var(--black);
-            font-family: var(--body-font);
-            font-weight: 300;
-            line-height: 1.8;
-            overflow-x: hidden;
+            margin: 0; background: var(--white); color: var(--black);
+            font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased;
         }
 
-        h1, h2, h3, h4 {
-            font-family: var(--header-font);
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            margin: 0;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: opacity 0.3s ease;
-        }
-
-        a:hover {
-            opacity: 0.7;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        /* SECTION UTILITIES */
-        .section {
-            padding: 120px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .container {
-            width: 100%;
-        }
-
-        /* 1. NAV & LOGO */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: var(--white);
-            z-index: 1000;
-            border-bottom: 1px solid #EEEEEE;
-        }
-
+        /* --- NAVIGATION --- */
         nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
+            position: fixed; width: 100%; top: 0; padding: 30px 60px;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(255,255,255,0.95); z-index: 1000; box-sizing: border-box;
         }
+        .logo { font-family: 'Cinzel', serif; font-size: 2.2rem; font-weight: 700; color: var(--black); letter-spacing: 4px; }
+        .nav-links { display: flex; gap: 40px; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; }
 
-        .logo-container {
-            font-size: 2rem;
-            font-weight: 900;
-            color: var(--black);
-            font-family: var(--header-font);
+        /* --- HERO --- */
+        .hero {
+            height: 100vh; display: flex; flex-direction: column; 
+            justify-content: center; align-items: center; text-align: center; padding: 0 20px;
         }
+        .hero h1 { font-family: 'Cinzel', serif; font-size: 3.5rem; margin-bottom: 10px; }
+        .hero p { max-width: 600px; font-weight: 300; font-size: 1.1rem; opacity: 0.8; margin-bottom: 40px; }
+        .gold-line { width: 80px; height: 1px; background: var(--gold); margin-bottom: 20px; }
 
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        /* 2. HERO SECTION */
-        #hero {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            line-height: 1.1;
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 40px;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 15px 40px;
-            border: 1px solid var(--black);
-            background-color: var(--white);
-            color: var(--black);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .cta-button:hover {
-            background-color: var(--black);
-            color: var(--white);
-        }
-
-        /* 3. MISSION SECTION */
-        #mission {
-            background-color: var(--white);
-            text-align: center;
-        }
-
-        .mission-header {
-            max-width: 800px;
-            margin: 0 auto 80px;
-        }
-
-        .mission-header h2 {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-        }
-
-        .mission-details {
-            display: flex;
-            gap: 60px;
-            justify-content: center;
-            text-align: left;
-        }
-
-        .mission-detail-item {
-            flex: 1;
-            max-width: 350px;
-        }
-
-        .mission-detail-item h4 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-        }
-
-        /* 4. TIERS / THE ENGAGEMENT LIST */
-        #tiers {
-            background-color: #FAFAFA; /* Very light subtle gray for contrast */
-            border-top: 1px solid #EEEEEE;
-        }
-
-        .tiers-header {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-
-        .tiers-header h2 {
-            font-size: 2.8rem;
-        }
-
-        .tiers-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-        }
+        /* --- TIERS SECTION --- */
+        .tier-section { padding: 100px 60px; background: var(--off-white); }
+        .tier-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
 
         .tier-card {
-            background-color: var(--white);
-            border: 1px solid var(--black);
-            padding: 60px;
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.3s ease;
+            background: var(--white); border: 1px solid #EAEAEA; padding: 50px 40px;
+            transition: var(--transition); position: relative; cursor: pointer;
+            display: flex; flex-direction: column;
         }
 
-        .tier-card:hover {
-            transform: translateY(-5px);
-        }
+        /* Subtle Silver/Gold Interactive Touches */
+        .tier-card:hover { border-color: var(--gold); transform: translateY(-10px); box-shadow: 0 20px 40px rgba(212, 175, 55, 0.08); }
+        .tier-card.silver:hover { border-color: var(--silver); box-shadow: 0 20px 40px rgba(192, 192, 192, 0.15); }
 
-        .tier-totem {
-            font-size: 3rem; /* Placeholder for Totem Art */
-            margin-bottom: 30px;
-            font-weight: 900;
-            color: var(--black);
-        }
+        .totem { font-size: 2rem; margin-bottom: 25px; color: var(--black); }
+        .tier-card h3 { font-family: 'Cinzel', serif; font-size: 1.8rem; margin-bottom: 15px; }
+        .tier-price { color: var(--gold); font-weight: 600; font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 25px; border-bottom: 1px solid #F0F0F0; padding-bottom: 15px; }
+        
+        /* Persuasive Pitch Text */
+        .pitch { font-size: 0.95rem; line-height: 1.6; margin-bottom: 25px; font-style: italic; opacity: 0.7; }
+        .benefits { list-style: none; padding: 0; font-size: 0.85rem; margin-bottom: 30px; }
+        .benefits li { margin-bottom: 12px; display: flex; align-items: flex-start; }
+        .benefits li::before { content: "—"; color: var(--gold); margin-right: 10px; }
 
-        /* Placeholders for the Black Obsidian Totem Art */
-        .totem-1::before { content: '■'; } /* The Monolith */
-        .totem-2::before { content: 'Ψ'; } /* The Gauntlet */
-        .totem-compass::before { content: '⊕'; } /* The Compass Aegis */
-        .totem-apex::before { content: 'Λ'; } /* The Apex Crown */
-
-        .tier-name {
-            font-family: var(--header-font);
-            font-size: 2.2rem;
-            margin-bottom: 10px;
+        .btn {
+            margin-top: auto; padding: 15px; text-align: center; 
+            border: 1px solid var(--black); font-size: 0.8rem; 
+            text-transform: uppercase; letter-spacing: 2px; transition: var(--transition);
         }
+        .tier-card:hover .btn { background: var(--black); color: var(--white); }
 
-        .tier-price {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 30px;
-            letter-spacing: 1px;
-        }
+        /* --- FOOTER --- */
+        footer { padding: 80px 60px; text-align: center; border-top: 1px solid #EEE; }
+        .footer-tag { font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 5px; color: var(--silver); margin-bottom: 20px; }
 
-        .tier-benefits {
-            font-size: 1rem;
-            margin-bottom: 40px;
-            flex-grow: 1;
-        }
-
-        .tier-benefits li {
-            margin-bottom: 15px;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .tier-benefits li::before {
-            content: '•';
-            position: absolute;
-            left: 0;
-            color: var(--black);
-        }
-
-        .tier-cta {
-            width: 100%;
-            text-align: center;
-        }
-
-        /* 5. CLIENTELE & EVENTS */
-        #events {
-            text-align: center;
-        }
-
-        .event-header h2 {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-        }
-
-        .event-frequencies {
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-        }
-
-        /* 6. FOOTER */
-        footer {
-            background-color: var(--black);
-            color: var(--white);
-            padding: 80px 40px;
-            text-align: center;
-        }
-
-        .footer-logo {
-            font-size: 2.5rem;
-            font-family: var(--header-font);
-            margin-bottom: 20px;
-        }
-
-        .footer-quote {
-            font-family: var(--header-font);
-            font-style: italic;
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto 40px;
-            opacity: 0.8;
-        }
-
-        .footer-nav {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 40px;
-        }
-
-        .copyright {
-            font-size: 0.8rem;
-            opacity: 0.6;
-        }
-
-        /* MOBILE RESPONSIVE */
-        @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2.5rem; }
-            .mission-details { flex-direction: column; align-items: center; }
-            .tiers-grid { grid-template-columns: 1fr; }
-            .nav-links { display: none; } /* Hide full nav on mobile */
-            .section { padding: 80px 20px; }
-        }
+        @media (max-width: 768px) { nav { padding: 20px; } .hero h1 { font-size: 2.2rem; } }
     </style>
 </head>
 <body>
 
-    <header>
-        <nav>
-            <div class="logo-container">
-                1saa
-            </div>
-            <ul class="nav-links">
-                <li><a href="#mission">Mission</a></li>
-                <li><a href="#tiers">The Engagement</a></li>
-                <li><a href="#events">Frequencies</a></li>
-                <li><a href="#login">Access</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section id="hero" class="section">
-        <div class="hero-content">
-            <h1>The Professionalism of Danger.<br>The Discretion of the Sovereign.</h1>
-            <p>1saa is a high-integrity private acquisition exchange for the collector who values the perfect fit. We don't sell to everyone; we curate for the few.</p>
-            <a href="#tiers" class="cta-button">View The Engagement</a>
+    <nav>
+        <div class="logo">1saa</div>
+        <div class="nav-links">
+            <a href="#">Inventory</a>
+            <a href="#">Government Initiatives</a>
+            <a href="#">The Collective</a>
+            <a href="#" style="color: var(--gold)">Member Login</a>
         </div>
+    </nav>
+
+    <section class="hero">
+        <div class="gold-line"></div>
+        <h1>Integrity In Every Exchange</h1>
+        <p>A private firearm acquisition firm where discretion is the standard and professionalism is the product. We serve the few who bring respect to the tactical lifestyle.</p>
     </section>
 
-    <section id="mission" class="section">
-        <div class="container">
-            <div class="mission-header">
-                <h2>A New Standard of Integrity</h2>
-                <p>We are changing the way discretion is defined in the firearm exchange. Your lifestyle is structured around high-integrity choices—your acquisition partner should mirror that standard.</p>
+    <section class="tier-section">
+        <div class="tier-grid">
+            
+            <div class="tier-card">
+                <div class="totem">■</div>
+                <h3>Basic</h3>
+                <p class="tier-price">$49.95 / MO</p>
+                <p class="pitch">"The foundation of strategic readiness starts here."</p>
+                <ul class="benefits">
+                    <li>Gated Access: Ammunition-driven Marketplace</li>
+                    <li>Priority Alerts: "The Frequencies" Newsletter</li>
+                    <li>Event Access: Local Non-Profit Briefings</li>
+                    <li>Compliance: Digital Safety Waiver Storage</li>
+                </ul>
+                <div class="btn">Initiate Membership</div>
             </div>
-            <div class="mission-details">
-                <div class="mission-detail-item">
-                    <h4>The Private Biller</h4>
-                    <p>We serve as your dedicated procurement agent. Every transaction is handled with the professionalism of a private banking relationship.</p>
-                </div>
-                <div class="mission-detail-item">
-                    <h4>Bespoke Logistics</h4>
-                    <p>Our goal is to create unique, honest professional paths for our agents and unique, high-security acquisition paths for our clients. Integrity in every delivery.</p>
-                </div>
+
+            <div class="tier-card silver">
+                <div class="totem" style="color: var(--silver)">Ψ</div>
+                <h3>Silver Claw</h3>
+                <p class="tier-price" style="color: var(--silver)">$199.00 / MO</p>
+                <p class="pitch">"Refining the transition from enthusiast to professional."</p>
+                <ul class="benefits">
+                    <li>Private Acquisition: Professional Handgun Portfolios</li>
+                    <li>Strategic Energy: 10% Sustained Ammo Discounts</li>
+                    <li>Verified Status: SecurityaPP Integration</li>
+                    <li>Community: Entry to Mid-Level Networking Events</li>
+                </ul>
+                <div class="btn">Elevate Access</div>
             </div>
-        </div>
-    </section>
 
-    <section id="tiers" class="section">
-        <div class="container">
-            <div class="tiers-header">
-                <h2>The Sovereign Exchange</h2>
-                <p>Access to our private inventory and global sourcing network is granted exclusively through our tiered engagement model.</p>
+            <div class="tier-card">
+                <div class="totem" style="color: var(--gold)">⊕</div>
+                <h3>Golden Claw</h3>
+                <p class="tier-price">$550.00 / MO</p>
+                <p class="pitch">"Global sourcing for the serious collector and strategic partner."</p>
+                <ul class="benefits">
+                    <li><strong>Federal Initiative:</strong> Designated SBA Associate Status</li>
+                    <li>Bespoke Sourcing: Global Firearm Import Services</li>
+                    <li>Agent Access: Personal Acquisition Concierge</li>
+                    <li>The Ballroom: Quarterly High-Integrity Galas</li>
+                </ul>
+                <div class="btn">Partner With 1saa</div>
             </div>
-            <div class="tiers-grid">
-                
-                <div class="tier-card">
-                    <div class="tier-totem totem-1"></div> <h3 class="tier-name">Basic</h3>
-                    <p class="tier-price">$49.95 / MONTHLY</p>
-                    <ul class="tier-benefits">
-                        <li>Gateway to Ample Supply (Ammunition Marketplace)</li>
-                        <li>5% Discount on Bulk Ammunition Orders</li>
-                        <li>Monthly Tactical Frequency Newsletter</li>
-                        <li>1saa Safety Waiver Activation</li>
-                    </ul>
-                    <a href="#apply" class="cta-button tier-cta">Request Entry</a>
-                </div>
 
-                <div class="tier-card">
-                    <div class="tier-totem totem-2"></div> <h3 class="tier-name">Silver Claw</h3>
-                    <p class="tier-price">$199.00 / MONTHLY</p>
-                    <ul class="tier-benefits">
-                        <li>The Professional Transition</li>
-                        <li>Private Acquisition of Handguns</li>
-                        <li>10% Ammunition Discount</li>
-                        <li>Invitation to Local Community Non-Profit Events</li>
-                        <li>SecurityaPP Verification Sync</li>
-                    </ul>
-                    <a href="#apply" class="cta-button tier-cta">Begin Acquisition</a>
-                </div>
-
-                <div class="tier-card">
-                    <div class="tier-totem totem-compass"></div> <h3 class="tier-name">Golden Claw</h3>
-                    <p class="tier-price">$550.00 / MONTHLY</p>
-                    <ul class="tier-benefits">
-                        <li>Global Sourcing & Collective Mastery</li>
-                        <li>Imported Firearm Acquisition Priority</li>
-                        <li>20% Ammunition Discount</li>
-                        <li>Designated Private Purchase Agent</li>
-                        <li>Quarterly Ballroom Level Networking Galas</li>
-                    </ul>
-                    <a href="#apply" class="cta-button tier-cta">Engage Agent</a>
-                </div>
-
-                <div class="tier-card">
-                    <div class="tier-totem totem-apex"></div> <h3 class="tier-name">Golden God</h3>
-                    <p class="tier-price">$2,500.00 / MONTHLY</p>
-                    <ul class="tier-benefits">
-                        <li>The Sovereign Exchange</li>
-                        <li>**White-Glove Private Arm Delivery**</li>
-                        <li>First-Right-of-Refusal on Rare Imports</li>
-                        <li>Highest Ammo Priority Allocation</li>
-                        <li>VIP Ballroom Table & Private Consultation</li>
-                        <li>Marine-Mantle™ Integration</li>
-                    </ul>
-                    <a href="#apply" class="cta-button tier-cta">Claim Sovereign Status</a>
-                </div>
-
+            <div class="tier-card">
+                <div class="totem" style="color: var(--gold)">Λ</div>
+                <h3>Golden God</h3>
+                <p class="tier-price">$2,500.00 / MO</p>
+                <p class="pitch">"Absolute sovereignty. Absolute discretion. Absolute delivery."</p>
+                <ul class="benefits">
+                    <li><strong>Project Apex-Procure:</strong> National Security Affiliation</li>
+                    <li>White-Glove: Private Armored Asset Delivery</li>
+                    <li>Asset Priority: First-Right on rare tactical imports</li>
+                    <li>Integrity Consult: Private Security & Yacht Logistics</li>
+                </ul>
+                <div class="btn">Claim Sovereignty</div>
             </div>
-        </div>
-    </section>
 
-    <section id="events" class="section">
-        <div class="container">
-            <div class="event-header">
-                <h2>The Frequencies</h2>
-                <p>We believe in doing good within our community. The 1saa club organizes exclusive, curated events—from private briefings to ballroom galas—focused on high-integrity networking and charitable community initiatives.</p>
-            </div>
-            <div class="event-frequencies">
-                <p>Only the cool ones, organized by us.</p>
-            </div>
         </div>
     </section>
 
     <footer>
-        <div class="container">
-            <div class="footer-logo">1saa</div>
-            <p class="footer-quote">"Discretion is the ultimate luxury. We don't sell guns; we curate the lifestyle."</p>
-            <ul class="footer-nav">
-                <li><a href="#privacy">Privacy Shield</a></li>
-                <li><a href="#terms">Terms</a></li>
-                <li><a href="#contact">Contact Agent</a></li>
-                <li><a href="#sam">SAM.gov</a></li>
-            </ul>
-            <p class="copyright">&copy; 2026 1st Guns And Ammo LLC. A Subsidiary of Global Citizen Joe LLC. All Rights Reserved.</p>
-        </div>
+        <div class="footer-tag">Sovereign • Discreet • Integral</div>
+        <p style="font-size: 0.7rem; opacity: 0.5; letter-spacing: 1px;">&copy; 2026 1ST GUNS AND AMMO LLC | GLOBAL CITIZEN JOE SUBSIDIARY</p>
     </footer>
 
 </body>
