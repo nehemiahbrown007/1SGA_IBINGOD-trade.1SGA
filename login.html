@@ -3,47 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1saa | Secure Access Portal</title>
+    <title>1saa | Secure Command Portal & Federal Gateway</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --white: #FFFFFF;
-            --black: #000000;
             --gold: #D4AF37;
-            --glass: rgba(255, 255, 255, 0.8);
-            --gov-gray: #F4F4F4;
+            --black: #050505;
+            --gov-blue: #002D62;
+            --white: #FFFFFF;
+            --gray: #F4F4F4;
+            --border: #E0E0E0;
         }
 
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap');
-
-        body {
-            margin: 0; height: 100vh; display: flex; align-items: center; justify-content: center;
-            font-family: 'Inter', sans-serif; background: var(--gov-gray);
-            /* Background image of a blurred luxury office or vault could go here */
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: var(--gray); 
+            font-family: 'Inter', sans-serif; 
+            display: flex; 
+            flex-direction: column; 
+            min-height: 100vh; 
         }
 
-        .login-vault {
-            background: var(--glass); backdrop-filter: blur(10px);
-            padding: 60px; border-radius: 2px; border: 1px solid #DDD;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1); width: 100%; max-width: 400px;
-            text-align: center; position: relative;
-        }
+        /* --- NAVIGATION STYLES --- */
+        header { background: #FFF; padding: 15px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
+        .logo { font-family: 'Cinzel', serif; font-size: 1.5rem; color: #000; text-decoration: none; letter-spacing: 3px; font-weight: 700; }
+        nav a { text-decoration: none; color: #000; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; margin-left: 20px; }
 
-        .login-vault::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--gold);
-        }
+        /* --- PORTAL CONTAINER --- */
+        .portal-container { flex: 1; display: flex; justify-content: center; align-items: center; padding: 40px 20px; }
+        .auth-card { background: #FFF; width: 100%; max-width: 600px; padding: 50px; border-radius: 4px; box-shadow: 0 10px 40px rgba(0,0,0,0.05); border: 1px solid var(--border); }
 
-        .logo { font-family: 'Cinzel', serif; font-size: 2rem; font-weight: 700; margin-bottom: 10px; }
-        .tagline { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 3px; color: #888; margin-bottom: 40px; }
+        /* --- TOGGLE SYSTEM --- */
+        .portal-toggle { display: flex; border: 1px solid var(--border); margin-bottom: 40px; border-radius: 2px; overflow: hidden; }
+        .toggle-btn { flex: 1; padding: 15px; border: none; background: #FFF; font-family: 'Cinzel'; font-size: 0.75rem; cursor: pointer; transition: 0.3s; opacity: 0.5; }
+        .toggle-btn.active { background: var(--black); color: var(--gold); opacity: 1; font-weight: 700; }
 
-        .input-group { margin-bottom: 20px; text-align: left; }
-        label { font-size: 0.7rem; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 8px; }
-        input {
-            width: 100%; padding: 12px; border: 1px solid #CCC; background: transparent;
-            box-sizing: border-box; font-family: 'Inter'; outline: none; transition: 0.3s;
-        }
+        /* --- FORM STYLES --- */
+        .form-section { display: none; }
+        .form-section.active { display: block; }
+        h2 { font-family: 'Cinzel', serif; margin-bottom: 10px; font-size: 1.5rem; text-align: center; }
+        .sub-txt { text-align: center; font-size: 0.8rem; color: #666; margin-bottom: 30px; }
+
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .full-width { grid-column: span 2; }
+
+        label { display: block; font-size: 0.65rem; text-transform: uppercase; font-weight: 800; letter-spacing: 1px; margin-bottom: 8px; color: #333; }
+        input, select, textarea { width: 100%; padding: 12px; border: 1px solid var(--border); background: var(--gray); font-family: 'Inter'; outline: none; }
         input:focus { border-color: var(--gold); }
 
-        .btn-primary {
-            width: 100%; padding: 15px; background: var(--black); color: white;
-            border: none; text-transform: uppercase; letter
+        .btn-submit { width: 100%; padding: 18px; background: var(--black); color: #FFF; border: none; text-transform: uppercase; font-weight: 800; letter-spacing: 2px; margin-top: 30px; cursor: pointer; }
+        .btn-submit:hover { background: #222; }
+
+        .login-link { text-align: center; margin-top: 20px; font-size: 0.8rem; }
+        .login-link a { color: var(--gold); text-decoration: none; font-weight: 700; }
+
+        footer { padding: 40px; text-align: center; font-size: 0.7rem; color: #888; border-top: 1px solid var(--border); background: #FFF; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">1saa</a>
+        <nav>
+            <a href="inventory.html">Inventory</a>
+            <a href="initiatives.html">Initiatives</a>
+            <a href="collective.html">The Collective</a>
+            <a href="login.html" style="color: var(--gold)">Login</a>
+        </nav>
+    </header>
+
+    <div class="portal-container">
+        <div class="auth-card">
+            
+            <div class="portal-toggle">
+                <button class="toggle-btn active" onclick="showPortal('member')">Sovereign Member</button>
+                <button class="toggle-btn" onclick="showPortal('contractor')">Gov Contractor</button>
+            </div>
+
+            <div id="member-portal" class="form-section active">
+                <h2>Member Registration</h2>
+                <p class="sub-txt">Enter the 1GAA Collective Think Tank.</p>
+                <form action="#" method="POST">
+                    <div class="form-grid">
+                        <div>
+                            <label>First Name</label>
+                            <input type="text" placeholder="John" required>
+                        </div>
+                        <div>
+                            <label>Last Name</label>
+                            <input type="text" placeholder="Doe" required>
+                        </div>
+                        <div class="full-width">
+                            <label>Member ID (If Existing)</label>
+                            <input type="text" placeholder="GAA-XXXX-2026">
+                        </div>
+                        <div class="full-width">
+                            <label>Address</label>
+                            <input type="text" placeholder="1234 Patriot Way" required>
+                        </div>
+                        <div>
+                            <label>City</label>
+                            <input type="text" placeholder="Philadelphia" required>
+                        </div>
+                        <div>
+                            <label>State / Zip</label>
+                            <input type="text" placeholder="PA 19102" required>
+                        </div>
+                        <div>
+                            <label>Profession</label>
+                            <input type="text" placeholder="What do you do for a living?" required>
+                        </div>
+                        <div>
+                            <label>Affiliations</label>
+                            <input type="text" placeholder="Business / Military / Non-Profit">
+                        </div>
+                        <div class="full-width">
+                            <label>Why do you want to join the 1GAA Collective?</label>
+                            <textarea rows="3" placeholder="Discuss your intent and potential contributions."></textarea>
+                        </div>
+                        <div class="full-width">
+                            <label>Have you been a part of a membership-based club before?</label>
+                            <select>
+                                <option>No</option>
+                                <option>Yes (Private/Tactical/Social)</option>
+                                <option>Yes (Industry/Professional)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>Contact Number</label>
+                            <input type="tel" placeholder="+1 (215) 000-0000" required>
+                        </div>
+                        <div>
+                            <label>Email Address</label>
+                            <input type="email" placeholder="john@example.com" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-submit">Initialize Membership</button>
+                </form>
+                <div class="login-link">Already a member? <a href="#">Secure Sign-In</a></div>
+            </div>
+
+            <div id="contractor-portal" class="form-section">
+                <h2 style="color: var(--gov-blue);">Contractor Gateway</h2>
+                <p class="sub-txt">Federal Logistics & Financial Clearinghouse.</p>
+                <form action="#" method="POST">
+                    <div class="form-grid">
+                        <div class="full-width">
+                            <label>Government Agency / Organization</label>
+                            <input type="text" placeholder="e.g. DoD, JPEO Armaments, DHS" required>
+                        </div>
+                        <div>
+                            <label>Contact ID / Badge Number</label>
+                            <input type="text" placeholder="Optional for Ease of Access">
+                        </div>
+                        <div>
+                            <label>Contractor UEI / CAGE Code</label>
+                            <input type="text" placeholder="For Corporate Identification" required>
+                        </div>
+                        <div class="full-width">
+                            <label>Primary Email (Official Domain Recommended)</label>
+                            <input type="email" placeholder="agent@agency.gov" required>
+                        </div>
+                        <div class="full-width" style="margin-top: 10px; padding: 15px; background: #f0f4f8; border: 1px dashed var(--gov-blue); font-size: 0.7rem;">
+                            <strong>Note:</strong> Registration provides immediate access to Logistics Dashboards, File Transfer Protocols (FTP), and Direct Messaging with 1GAA Board Members.
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-submit" style="background: var(--gov-blue);">Access Federal Portal</button>
+                </form>
+                <div class="login-link">Existing Contractor? <a href="#" style="color: var(--gov-blue);">Log In</a></div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>1ST GUNS AND AMMO LLC • IBINGOD TRADE CO • PHILADELPHIA INITIATIVE</p>
+        <p style="margin-top: 10px; opacity: 0.5;">CMMC 2.0 Compliance Level 2 | NIST 800-171 Data Security Standard</p>
+    </footer>
+
+    <script>
+        function showPortal(type) {
+            document.querySelectorAll('.form-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+            
+            document.getElementById(type + '-portal').classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
