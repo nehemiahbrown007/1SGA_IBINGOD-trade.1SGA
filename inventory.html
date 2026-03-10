@@ -3,73 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1saa Inventory | Strategic Energy & Ballistics Encyclopedia</title>
+    <title>1saa | Strategic Energy Inventory & Ballistic Dossier</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --white: #FFFFFF;
-            --black: #000000;
             --gold: #D4AF37;
             --silver: #C0C0C0;
-            --gov-gray: #F4F4F4;
-            --deep-gray: #222;
-            --transition: all 0.3s ease;
+            --black: #050505;
+            --white: #FFFFFF;
+            --off-white: #F9F9F9;
+            --gov-gray: #1A1A1A;
+            --border: rgba(0, 0, 0, 0.1);
         }
 
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background-color: var(--white); 
+            color: var(--black); 
+            font-family: 'Inter', sans-serif; 
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
 
-        body { margin: 0; background: var(--white); color: var(--black); font-family: 'Inter', sans-serif; }
-        
-        /* --- MINIMAL HEADER --- */
+        /* --- GLOBAL NAVIGATION (Matching Index) --- */
+        .top-banner {
+            background: var(--black);
+            color: var(--gold);
+            font-size: 0.65rem;
+            text-align: center;
+            padding: 10px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: 800;
+        }
+
         header {
-            padding: 15px 40px; display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 1px solid #EEE; position: sticky; top: 0; background: white; z-index: 100;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
         }
-        .logo { font-family: 'Cinzel', serif; font-size: 1.5rem; font-weight: 700; letter-spacing: 2px; text-decoration: none; color: black; }
-        nav a { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; margin-left: 20px; text-decoration: none; color: black; font-weight: 600; }
 
-        /* --- HERO SECTION --- */
+        .logo { font-family: 'Cinzel', serif; font-size: 1.8rem; color: var(--black); text-decoration: none; letter-spacing: 5px; font-weight: 700; }
+        
+        nav { display: flex; gap: 40px; }
+        nav a { 
+            text-decoration: none; 
+            color: var(--black); 
+            font-size: 0.7rem; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            font-weight: 700;
+            transition: 0.3s;
+        }
+        nav a:hover { color: var(--gold); }
+
+        /* --- INVENTORY HERO --- */
         .inventory-hero {
-            padding: 80px 40px; text-align: center; background: linear-gradient(to bottom, #fff, var(--gov-gray));
+            padding: 100px 60px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+            background: var(--off-white);
         }
-        .inventory-hero h1 { font-family: 'Cinzel', serif; font-size: 3.5rem; margin-bottom: 10px; }
-        .inventory-hero p { max-width: 900px; margin: 0 auto; font-size: 1.1rem; opacity: 0.7; line-height: 1.8; }
+        .inventory-hero span { color: var(--gold); font-size: 0.7rem; letter-spacing: 5px; text-transform: uppercase; font-weight: 800; }
+        .inventory-hero h1 { font-family: 'Cinzel', serif; font-size: 3.5rem; margin-top: 20px; letter-spacing: 2px; }
+        .inventory-hero p { max-width: 800px; margin: 20px auto 0; font-size: 1.1rem; font-weight: 300; opacity: 0.7; }
 
-        /* --- THE TIMELINE (HISTORY) --- */
-        .section-title { font-family: 'Cinzel', serif; text-align: center; font-size: 2rem; margin: 60px 0 40px; }
-        .timeline { max-width: 1000px; margin: 0 auto; padding: 20px; border-left: 2px solid var(--gold); }
-        .timeline-item { margin-bottom: 40px; padding-left: 30px; position: relative; }
-        .timeline-item::before { content: ''; position: absolute; left: -11px; top: 5px; width: 20px; height: 20px; background: var(--white); border: 2px solid var(--gold); border-radius: 50%; }
-        .timeline-item h4 { color: var(--gold); margin: 0; text-transform: uppercase; letter-spacing: 2px; }
+        /* --- DATA GRID SECTIONS --- */
+        .container { max-width: 1400px; margin: 0 auto; padding: 80px 60px; }
 
-        /* --- BALLISTICS GRID --- */
-        .data-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 40px; }
-        .data-card { background: var(--gov-gray); padding: 30px; border: 1px solid #DDD; }
-        .data-card h3 { font-family: 'Cinzel', serif; border-bottom: 1px solid var(--silver); padding-bottom: 10px; }
-
-        /* --- MANUFACTURER TABLE --- */
-        .table-container { padding: 40px; overflow-x: auto; }
-        table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
-        th { background: var(--black); color: var(--white); padding: 15px; text-align: left; font-family: 'Cinzel'; }
-        td { padding: 15px; border-bottom: 1px solid #EEE; }
-        tr:hover { background: var(--gov-gray); }
-
-        /* --- IMAGE PLACEHOLDERS --- */
-        .info-graphic { 
-            width: 100%; height: 400px; background: #333; margin: 40px 0; 
-            display: flex; align-items: center; justify-content: center; color: white;
-            font-family: 'Cinzel'; font-size: 1.2rem; background-size: cover; background-position: center;
+        .section-label { 
+            font-family: 'Cinzel', serif; 
+            font-size: 1.5rem; 
+            border-bottom: 2px solid var(--gold); 
+            display: inline-block; 
+            margin-bottom: 40px;
+            padding-bottom: 5px;
         }
 
-        footer { background: var(--gov-gray); padding: 40px; text-align: center; border-top: 1px solid #EEE; }
-        .footer-links a { margin: 0 10px; text-decoration: none; color: black; font-size: 0.7rem; opacity: 0.6; }
+        /* --- BALLISTIC TABLES --- */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 80px;
+            font-size: 0.85rem;
+        }
+        .data-table th {
+            text-align: left;
+            padding: 20px;
+            background: var(--black);
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Cinzel', serif;
+        }
+        .data-table td {
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        .data-table tr:hover { background: var(--off-white); }
+        .data-table .highlight { color: var(--gold); font-weight: 800; }
+
+        /* --- EDUCATIONAL DOSSIER BLOCKS --- */
+        .dossier-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 100px;
+        }
+        .dossier-card {
+            border-left: 3px solid var(--gold);
+            padding: 0 0 0 30px;
+        }
+        .dossier-card h3 { font-family: 'Cinzel', serif; font-size: 1.2rem; margin-bottom: 15px; }
+        .dossier-card p { font-size: 0.9rem; color: #555; line-height: 1.8; }
+
+        /* --- KINETIC ENERGY CALCULATOR (STATIC VISUAL) --- */
+        .formula-box {
+            background: var(--black);
+            color: var(--white);
+            padding: 60px;
+            text-align: center;
+            margin-bottom: 100px;
+        }
+        .formula { font-family: 'Cinzel', serif; font-size: 2.5rem; color: var(--gold); margin: 20px 0; }
+        .formula-desc { font-size: 0.8rem; opacity: 0.6; letter-spacing: 1px; }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 60px;
+            background: var(--off-white);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.7rem;
+            color: #888;
+        }
+        .footer-logo { font-family: 'Cinzel', serif; color: var(--black); font-weight: 700; font-size: 1.2rem; }
+
+        @media (max-width: 768px) {
+            header, .container, footer { padding: 20px; }
+            .inventory-hero h1 { font-size: 2.2rem; }
+            .formula { font-size: 1.5rem; }
+        }
     </style>
 </head>
 <body>
 
+    <div class="top-banner">Strategic Energy Reserve • Certified NIST Compliance • Authorized Procurement Only</div>
+
     <header>
         <a href="index.html" class="logo">1saa</a>
         <nav>
-            <a href="inventory.html">Inventory</a>
+            <a href="inventory.html" style="color: var(--gold);">Inventory</a>
             <a href="initiatives.html">Initiatives</a>
             <a href="collective.html">The Collective</a>
             <a href="login.html">Login</a>
@@ -77,49 +172,137 @@
     </header>
 
     <section class="inventory-hero">
-        <div style="font-size: 0.7rem; letter-spacing: 4px; color: var(--gold); margin-bottom: 20px;">CATALOGUE 2026.01</div>
+        <span>Inventory Codex 2026.04</span>
         <h1>Strategic Energy Assets</h1>
-        <p>Ammunition is more than a consumable; it is the fundamental unit of kinetic sovereignty. Below is the 1saa definitive guide to calibers, ballistics, and the industrial base that powers global security.</p>
+        <p>
+            Ammunition is the fundamental unit of kinetic sovereignty. 
+            Below is the 1saa definitive repository of ballistics, caliber specifications, 
+            and the industrial manufacturers that power our national defense auxiliary.
+        </p>
     </section>
 
-    <h2 class="section-title">The Evolution of the Round</h2>
-    <div class="timeline">
-        <div class="timeline-item">
-            <h4>900 AD: The Fire Lance</h4>
-            <p>The dawn of chemical propulsion. Chinese alchemists utilize bamboo tubes and black powder to launch pottery shards.</p>
+    <div class="container">
+        
+        <h2 class="section-label">Primary Caliber Classifications</h2>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Caliber Class</th>
+                    <th>Standard Velocity (fps)</th>
+                    <th>Energy (ft-lbs)</th>
+                    <th>Application Profile</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="highlight">9MM LUGER</td>
+                    <td>1,150</td>
+                    <td>355</td>
+                    <td>Defensive Sidearm / Low Visibility Operations</td>
+                </tr>
+                <tr>
+                    <td class="highlight">.45 ACP</td>
+                    <td>830</td>
+                    <td>356</td>
+                    <td>Subsonic Heavy Suppression / High Kinetic Impact</td>
+                </tr>
+                <tr>
+                    <td class="highlight">5.56 NATO</td>
+                    <td>3,100</td>
+                    <td>1,300</td>
+                    <td>Standard Strategic Deployment / Precision Engagement</td>
+                </tr>
+                <tr>
+                    <td class="highlight">.308 WINCHESTER</td>
+                    <td>2,800</td>
+                    <td>2,600</td>
+                    <td>Long Range Asset Acquisition / Barrier Neutralization</td>
+                </tr>
+                <tr>
+                    <td class="highlight">6.5 CREEDMOOR</td>
+                    <td>2,700</td>
+                    <td>2,300</td>
+                    <td>Aerodynamic Excellence / Competition Grade Ballistics</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="formula-box">
+            <span>The Law of Engagement</span>
+            <div class="formula">E<sub>k</sub> = ½mv²</div>
+            <p class="formula-desc">KINETIC ENERGY INCREASES BY THE SQUARE OF VELOCITY. MASS IS THE ANCHOR, SPEED IS THE LETHALITY.</p>
         </div>
-        <div class="timeline-item">
-            <h4>1400s: The Cast Lead Ball</h4>
-            <p>Standardization begins. Molten lead is formed into spheres for smoothbore muskets, defining warfare for four centuries.</p>
+
+        <h2 class="section-label">The Evolution of the Round</h2>
+        <div class="dossier-grid">
+            <div class="dossier-card">
+                <h3>900 AD: The Origin</h3>
+                <p>The first documented use of chemical propulsion—The Fire Lance. A transition from static defense to kinetic projection using bamboo and black powder.</p>
+            </div>
+            <div class="dossier-card">
+                <h3>1841: The Minié Ball</h3>
+                <p>The introduction of the conical projectile. Hollow bases allowed expanding into rifling, increasing effective engagement distance by 300%.</p>
+            </div>
+            <div class="dossier-card">
+                <h3>1882: The Metal Jacket</h3>
+                <p>Eduard Rubin’s copper jacket enabled high-velocity smokeless powder rounds, forming the baseline for all modern sovereign defense assets.</p>
+            </div>
+            <div class="dossier-card" style="border-color: var(--silver);">
+                <h3>2026: Smart Energetics</h3>
+                <p>1GAA leads the integration of precision-guided small-arms rounds and environmentally stable primer technology for the FY2026 SPEED Act.</p>
+            </div>
         </div>
-        <div class="timeline-item">
-            <h4>1841: The Minié Ball</h4>
-            <p>The birth of precision. Conical bullets with hollow bases expand into rifling, tripling effective engagement ranges.</p>
-        </div>
-        <div class="timeline-item">
-            <h4>1882: The Full Metal Jacket</h4>
-            <p>Eduard Rubin encases lead in copper alloy, allowing for higher velocities without barrel fouling. Modernity arrives.</p>
-        </div>
-        <div class="timeline-item">
-            <h4>2026: Smart Energetics</h4>
-            <p>1GAA leads the shift toward precision-guided small-arms rounds and eco-friendly primer technologies.</p>
-        </div>
+
+        <h2 class="section-label">The Industrial Base (Affiliations)</h2>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Manufacturer</th>
+                    <th>Strategic Tier</th>
+                    <th>Specialization</th>
+                    <th>Global Headquarters</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Federal Ammunition</strong></td>
+                    <td class="highlight">Tier 1 Sovereign</td>
+                    <td>Small Arms / Primers</td>
+                    <td>Anoka, MN (USA)</td>
+                </tr>
+                <tr>
+                    <td><strong>Hornady Manufacturing</strong></td>
+                    <td class="highlight">Elite Precision</td>
+                    <td>Match Grade / Ballistic Tip</td>
+                    <td>Grand Island, NE (USA)</td>
+                </tr>
+                <tr>
+                    <td><strong>BAE Systems</strong></td>
+                    <td class="highlight">Federal Bridge</td>
+                    <td>Strategic Ordnance</td>
+                    <td>London (UK)</td>
+                </tr>
+                <tr>
+                    <td><strong>Winchester (Olin)</strong></td>
+                    <td class="highlight">Legacy Core</td>
+                    <td>Mil-Spec Logistics</td>
+                    <td>Clayton, MO (USA)</td>
+                </tr>
+            </tbody>
+        </table>
+
     </div>
 
-    [Image of historical ammunition evolution timeline from musket balls to modern cartridges]
-
-    <h2 class="section-title">Kinetic Data & Ballistics</h2>
-    <div class="data-grid">
-        <div class="data-card">
-            <h3>Handgun Metrics</h3>
-            <p>Ideal for personal defense and low-visibility operations.</p>
-            <ul>
-                <li><b>9mm Luger:</b> 1,180 fps | High capacity standard.</li>
-                <li><b>.45 ACP:</b> 835 fps | Subsonic stopping power.</li>
-                <li><b>10mm Auto:</b> 1,200 fps | The "Magnum" of semi-autos.</li>
-            </ul>
+    <footer>
+        <div class="footer-logo">1saa</div>
+        <div>
+            <p>&copy; 2026 1ST GUNS AND AMMO LLC | IBINGOD TRADE CO.</p>
+            <p style="margin-top: 5px;">DISTRIBUTION SUBJECT TO ITAR AND FEDERAL COMPLIANCE GUIDELINES.</p>
         </div>
-        <div class="data-card">
-            <h3>Rifle Ballistics</h3>
-            <p>Precision assets for long-range engagement and barrier penetration.</p>
-            <ul>
+        <div style="text-align: right; text-transform: uppercase; letter-spacing: 1px;">
+            <p>Sovereign Inventory • NIST Compliant</p>
+        </div>
+    </footer>
+
+</body>
+</html>
