@@ -1,28 +1,179 @@
-<section class="mission-statement" style="padding: 60px 40px; background: #fff; text-align: center;">
-    <h2 style="font-family: 'Cinzel', serif; color: var(--gold);">The 1saa Mandate</h2>
-    <p style="max-width: 900px; margin: 0 auto; font-style: italic; font-size: 1.1rem;">
-        "We are an elite group of professionals who know how to get things done. When the United States Government requires the agility of a small business and the integrity of a patriot, 1saa answers the call. We do not seek to be controlled; we seek to contribute."
-    </p>
-</section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1saa Initiatives | Philadelphia Community Impact & Federal Grants</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --black: #050505;
+            --white: #FFFFFF;
+            --gov-blue: #002D62;
+            --soft-gray: #F4F4F4;
+            --border: rgba(0, 0, 0, 0.1);
+        }
 
-<div class="grant-portfolio" style="padding: 40px; background: var(--gov-gray);">
-    <h3 style="font-family: 'Cinzel', serif; text-align: center;">Targeted Grant List: 2026 Fiscal Cycle</h3>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px;">
-        <div style="background: white; padding: 20px; border-left: 4px solid var(--gold);">
-            <strong style="font-size: 0.8rem; color: var(--gold);">DEFENSE</strong>
-            <p style="font-size: 0.9rem; margin: 10px 0;">DoD SBIR/STTR Innovation Grants</p>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--white); color: var(--black); font-family: 'Inter', sans-serif; line-height: 1.7; }
+
+        /* --- GLOBAL NAVIGATION --- */
+        .top-banner { background: var(--black); color: var(--gold); font-size: 0.65rem; text-align: center; padding: 10px; text-transform: uppercase; letter-spacing: 4px; font-weight: 800; }
+        header { position: sticky; top: 0; z-index: 1000; background: #FFF; padding: 20px 60px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
+        .logo { font-family: 'Cinzel', serif; font-size: 1.8rem; color: #000; text-decoration: none; letter-spacing: 5px; font-weight: 700; }
+        nav { display: flex; gap: 40px; }
+        nav a { text-decoration: none; color: #000; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; transition: 0.3s; }
+        nav a:hover { color: var(--gold); }
+
+        /* --- HERO: PHILADELPHIA INITIATIVE --- */
+        .hero { padding: 100px 60px; background: var(--soft-gray); border-bottom: 1px solid var(--border); }
+        .hero span { color: var(--gold); font-size: 0.75rem; letter-spacing: 5px; font-weight: 800; text-transform: uppercase; }
+        .hero h1 { font-family: 'Cinzel', serif; font-size: 3.5rem; margin: 20px 0; line-height: 1.1; }
+        .hero p { max-width: 900px; font-size: 1.2rem; font-weight: 300; color: #444; }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 80px 60px; }
+        .section-title { font-family: 'Cinzel', serif; font-size: 2rem; border-left: 5px solid var(--gold); padding-left: 20px; margin-bottom: 40px; }
+
+        /* --- GRANT OPPORTUNITY TABLE --- */
+        .grant-table { width: 100%; border-collapse: collapse; margin-bottom: 80px; }
+        .grant-table th { background: var(--black); color: white; padding: 20px; text-align: left; font-family: 'Cinzel'; font-size: 0.8rem; letter-spacing: 1px; }
+        .grant-table td { padding: 20px; border-bottom: 1px solid var(--border); vertical-align: top; }
+        .grant-amount { font-weight: 800; color: var(--gov-blue); font-size: 1.1rem; display: block; }
+
+        /* --- THE BIG 20 CONTRACTORS GRID --- */
+        .contractor-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 80px; }
+        .contractor-card { padding: 25px; border: 1px solid var(--border); background: var(--soft-gray); }
+        .contractor-card h4 { font-family: 'Cinzel'; margin-bottom: 10px; color: var(--gold); }
+        .contractor-card p { font-size: 0.8rem; opacity: 0.7; }
+
+        /* --- THINK TANK SECTION --- */
+        .think-tank { background: var(--black); color: white; padding: 80px 60px; text-align: center; margin-bottom: 80px; }
+        .think-tank h2 { font-family: 'Cinzel'; color: var(--gold); font-size: 2.5rem; margin-bottom: 20px; }
+        .think-tank p { max-width: 800px; margin: 0 auto; font-size: 1.1rem; opacity: 0.8; line-height: 2; }
+
+        footer { padding: 60px; background: var(--soft-gray); border-top: 1px solid var(--border); font-size: 0.7rem; color: #888; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <div class="top-banner">Philadelphia Community Initiative • TBBL.org Strategic Partner • FY2026 Defense Funding</div>
+
+    <header>
+        <a href="index.html" class="logo">1saa</a>
+        <nav>
+            <a href="inventory.html">Inventory</a>
+            <a href="initiatives.html" style="color: var(--gold);">Initiatives</a>
+            <a href="collective.html">The Collective</a>
+            <a href="login.html">Login</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <span>Urban Industrial Empowerment</span>
+        <h1>Project Philly-Apex</h1>
+        <p>
+            Partnering with <strong>TBBL.org</strong>, we are infusing Philadelphia with federal defense capital to create jobs, 
+            train the youth in high-tech ballistics logistics, and establish a Think Tank of positive professionals 
+            capable of securing the future of the American industrial base.
+        </p>
+    </section>
+
+    <div class="container">
+        
+        <h2 class="section-title">2026 Targeted Grant Portfolio</h2>
+        <table class="grant-table">
+            <thead>
+                <tr>
+                    <th>Initiative Name</th>
+                    <th>Granting Department</th>
+                    <th>Target Amount</th>
+                    <th>Mission Objective</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Urban Defense Workforce Development</strong></td>
+                    <td>DoD / Dept. of Labor</td>
+                    <td><span class="grant-amount">$4,500,000</span></td>
+                    <td>Training 200+ Philadelphia youth in advanced ammunition manufacturing and automated logistics.</td>
+                </tr>
+                <tr>
+                    <td><strong>Non-Profit Security Hardening (TBBL Sync)</strong></td>
+                    <td>DHS / FEMA</td>
+                    <td><span class="grant-amount">$150,000</span></td>
+                    <td>Securing physical facilities for our non-profit affiliates to operate community programs safely.</td>
+                </tr>
+                <tr>
+                    <td><strong>Small Business Ammunition Surge Capacity</strong></td>
+                    <td>DoD / JPEO Armaments</td>
+                    <td><span class="grant-amount">$12,000,000</span></td>
+                    <td>Establishing a surge-capacity storage and distribution hub within the Philadelphia metropolitan area.</td>
+                </tr>
+                <tr>
+                    <td><strong>Youth Violence Intervention (Kinetic Peace)</strong></td>
+                    <td>DOJ / OJJDP</td>
+                    <td><span class="grant-amount">$750,000</span></td>
+                    <td>Positive mentorship programs redirecting youth from street violence to professional tactical careers.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="think-tank">
+            <h2>The 1GAA Think Tank</h2>
+            <p>
+                We have assembled a collective of individuals who are not just capable, but <strong>trainable.</strong> 
+                Our Think Tank operates on the belief that information is power. By teaching our community the 
+                complexities of government contracting, ITAR compliance, and ballistics science, we unlock 
+                possibilities that were previously gated by elitism.
+            </p>
         </div>
-        <div style="background: white; padding: 20px; border-left: 4px solid var(--gold);">
-            <strong style="font-size: 0.8rem; color: var(--gold);">SECURITY</strong>
-            <p style="font-size: 0.9rem; margin: 10px 0;">DHS Nonprofit Security Hardening</p>
+
+        <h2 class="section-title">Strategic Industry Alignment (The Big 20)</h2>
+        <p style="margin-bottom: 30px;">We foresee a future where 1GAA / IBINGOD Trade serves as the primary small-business subcontractor for these defense giants:</p>
+        
+        <div class="contractor-grid">
+            <div class="contractor-card"><h4>1. Lockheed Martin</h4><p>Strategic Missiles & Fire Control Subcontracting.</p></div>
+            <div class="contractor-card"><h4>2. Raytheon (RTX)</h4><p>Precision Munitions & Ballistic Data Sync.</p></div>
+            <div class="contractor-card"><h4>3. Northrop Grumman</h4><p>Small Caliber Ammunition Supply Chain.</p></div>
+            <div class="contractor-card"><h4>4. General Dynamics</h4><p>Ordnance and Tactical Systems Support.</p></div>
+            <div class="contractor-card"><h4>5. BAE Systems</h4><p>Joint-Venture Global Munitions Logistics.</p></div>
+            <div class="contractor-card"><h4>6. L3Harris</h4><p>Tactical Communications for Field Operations.</p></div>
+            <div class="contractor-card"><h4>7. Huntington Ingalls</h4><p>Naval Armament Storage Solutions.</p></div>
+            <div class="contractor-card"><h4>8. Leidos</h4><p>Defense IT & Logistics Infrastructure.</p></div>
+            <div class="contractor-card"><h4>9. Booz Allen Hamilton</h4><p>Intelligence-Led Strategic Procurement.</p></div>
+            <div class="contractor-card"><h4>10. Oshkosh Defense</h4><p>Mobile Ammunition Distribution Platforms.</p></div>
+            <div class="contractor-card"><h4>11. Textron</h4><p>Small Arms Systems Modernization.</p></div>
+            <div class="contractor-card"><h4>12. Aerojet Rocketdyne</h4><p>Propellant Supply & Energetic Materials.</p></div>
+            <div class="contractor-card"><h4>13. SAIC</h4><p>Technical Training & Community Engineering.</p></div>
+            <div class="contractor-card"><h4>14. CACI International</h4><p>National Security Operations Support.</p></div>
+            <div class="contractor-card"><h4>15. BWX Technologies</h4><p>Specialized Materials & Component Manufacturing.</p></div>
+            <div class="contractor-card"><h4>16. Parsons Corp</h4><p>Defense Infrastructure & Site Security.</p></div>
+            <div class="contractor-card"><h4>17. VSE Corp</h4><p>Supply Chain Management for Federal Assets.</p></div>
+            <div class="contractor-card"><h4>18. KBR Inc.</h4><p>Base Operations & Rapid Global Deployment.</p></div>
+            <div class="contractor-card"><h4>19. Jacobs Solutions</h4><p>Advanced Facility Engineering for Logistics.</p></div>
+            <div class="contractor-card"><h4>20. ManTech</h4><p>Cyber-Hardened Procurement Systems.</p></div>
         </div>
-        <div style="background: white; padding: 20px; border-left: 4px solid var(--gold);">
-            <strong style="font-size: 0.8rem; color: var(--gold);">LOGISTICS</strong>
-            <p style="font-size: 0.9rem; margin: 10px 0;">Rapid Innovation Fund (RISE)</p>
-        </div>
-        <div style="background: white; padding: 20px; border-left: 4px solid var(--gold);">
-            <strong style="font-size: 0.8rem; color: var(--gold);">CYBER</strong>
-            <p style="font-size: 0.9rem; margin: 10px 0;">State & Local Cybersecurity Grants</p>
-        </div>
+
+        <h2 class="section-title">Federal Departments of Interest</h2>
+        <ul style="columns: 2; list-style: square; padding-left: 20px; font-weight: 600; color: var(--gov-blue);">
+            <li>Department of Defense (DoD) - Army Materiel Command</li>
+            <li>Department of Justice (DOJ) - Bureau of Alcohol, Tobacco, Firearms and Explosives</li>
+            <li>Department of Homeland Security (DHS) - Federal Law Enforcement Training Centers</li>
+            <li>Department of State - Directorate of Defense Trade Controls (DDTC)</li>
+            <li>Department of Labor - Apprenticeship & Training Division</li>
+            <li>Small Business Administration (SBA) - Philadelphia District Office</li>
+        </ul>
+
     </div>
-</div>
+
+    <footer>
+        <p>1ST GUNS AND AMMO LLC • TBBL.ORG AFFILIATE • IBINGOD TRADE CO.</p>
+        <p style="margin-top: 10px;">SAM.GOV REGISTERED | CAGE CODE: [REDACTED] | UEI: [REDACTED]</p>
+        <p style="font-size: 0.6rem; margin-top: 20px; opacity: 0.5;">Fostering Philadelphia's Future through Positive Professional Engagement.</p>
+    </footer>
+
+</body>
+</html>
