@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1saa | The Collective - Sovereign Alignment</title>
+    <style>
+        :root {
+            --white: #FFFFFF;
+            --black: #000000;
+            --gold: #D4AF37;
+            --silver: #C0C0C0;
+            --gov-gray: #F8F8F8;
+            --transition: all 0.4s ease;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap');
+
+        body { margin: 0; background: var(--white); color: var(--black); font-family: 'Inter', sans-serif; }
+        
+        header { padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #EEE; position: sticky; top: 0; background: white; z-index: 100; }
+        .logo { font-family: 'Cinzel', serif; font-size: 1.5rem; font-weight: 700; text-decoration: none; color: black; letter-spacing: 2px; }
+        nav a { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; margin-left: 20px; text-decoration: none; color: black; font-weight: 600; }
+
+        /* --- THE COLLECTIVE HERO --- */
+        .collective-hero { padding: 80px 40px; text-align: center; background: #fff; }
+        .collective-hero h1 { font-family: 'Cinzel', serif; font-size: 3rem; margin-bottom: 20px; letter-spacing: 5px; }
+        .collective-hero p { max-width: 800px; margin: 0 auto; font-size: 1.1rem; opacity: 0.7; font-style: italic; }
+
+        /* --- THE ACTIVE MISSIONS --- */
+        .mission-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; padding: 40px; max-width: 1200px; margin: 0 auto; }
+        .mission-card { border: 1px solid #EEE; padding: 40px; transition: var(--transition); background: var(--white); }
+        .mission-card:hover { border-color: var(--gold); background: var(--gov-gray); transform: scale(1.02); }
+        .mission-id { font-size: 0.7rem; color: var(--gold); font-weight: 700; letter-spacing: 3px; margin-bottom: 10px; display: block; }
+        .mission-card h3 { font-family: 'Cinzel', serif; margin: 0 0 15px; font-size: 1.5rem; }
+
+        /* --- THE "POSITIVE IMPACT" SECTION --- */
+        .impact-statement { background: var(--black); color: white; padding: 100px 40px; text-align: center; }
+        .impact-statement h2 { font-family: 'Cinzel', serif; font-size: 2.5rem; color: var(--gold); margin-bottom: 30px; }
+        .impact-statement p { max-width: 900px; margin: 0 auto; font-size: 1.2rem; opacity: 0.8; line-height: 2; }
+
+        /* --- AFFILIATIONS --- */
+        .affiliation-bar { display: flex; justify-content: center; gap: 60px; padding: 60px 40px; opacity: 0.5; grayscale: 100%; }
+        .aff-logo { font-family: 'Cinzel'; font-size: 0.9rem; letter-spacing: 2px; }
+
+        footer { background: white; padding: 40px; text-align: center; border-top: 1px solid #EEE; font-size: 0.7rem; opacity: 0.6; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">1saa</a>
+        <nav>
+            <a href="inventory.html">Inventory</a>
+            <a href="initiatives.html">Initiatives</a>
+            <a href="collective.html" style="color: var(--gold)">The Collective</a>
+            <a href="login.html">Login</a>
+        </nav>
+    </header>
+
+    <section class="collective-hero">
+        <h1>The Collective</h1>
+        <p>"Positive Professionals. Strategic Missions. National Resilience."</p>
+    </section>
+
+    <div class="mission-grid">
+        
+        <div class="mission-card">
+            <span class="mission-id">MISSION 01 : THE SYMPOSIUM</span>
+            <h3>The Sovereign Industrial Gala</h3>
+            <p>An elite ballroom event focused on federal grant alignments and industrial defense strategy. Black-tie mandatory.</p>
+        </div>
+
+        <div class="mission-card">
+            <span class="mission-id">MISSION 02 : TACTICAL PRECISION</span>
+            <h3>The White-Glove Range Day</h3>
+            <p>Private training for Tier 3 & 4. Mastery of imported assets (ITAC) followed by a private executive briefing.</p>
+        </div>
+
+        <div class="mission-card">
+            <span class="mission-id">MISSION 03 : COMMUNITY SHIELD</span>
+            <h3>Non-Profit Security Hardening</h3>
+            <p>A deployment of 1saa professionals to assist our non-profit affiliates in community safety protocols.</p>
+        </div>
+
+    </div>
+
+    <section class="impact-section" style="padding: 100px 40px; text-align: center;">
+        <h2 style="font-family: 'Cinzel'; margin-bottom: 30px;">Positive Help for a Positive Future</h2>
+        <p style="max-width: 800px; margin: 0 auto; line-height: 1.8; font-size: 1.1rem; opacity: 0.8;">
+            The United States Government thrives when it is supported by elite citizens who stand for integrity. We are a group of professionals who refuse to be controlled, but choose to contribute. We complete goals, fulfill federal missions, and ensure that the professionalism of the firearm exchange is brought to the highest possible level of respect.
+        </p>
+    </section>
+
+    <div class="impact-statement">
+        <h2>"Integrity is the Only Currency."</h2>
+        <p>Our members live life differently—on yachts, in private jets, and in the halls of power. But in The Collective, we are all bound by one initiative: to do good for our community and to stand as a reputable shield for the United States of America.</p>
+    </div>
+
+    <div class="affiliation-bar">
+        <div class="aff-logo">TACTICAL EDU FOUNDATION</div>
+        <div class="aff-logo">VETERAN LOGISTICS ALLIANCE</div>
+        <div class="aff-logo">CYBER DEFENSE INITIATIVE</div>
+    </div>
+
+    <footer>
+        <p>1ST GUNS AND AMMO LLC • THE COLLECTIVE • PRIVACY SHIELD PROTECTED</p>
+        <p style="margin-top: 10px;">&copy; 2026 GLOBAL CITIZEN JOE LLC</p>
+    </footer>
+
+</body>
+</html>
