@@ -3,163 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1saa | Private Biller & Sovereign Exchange</title>
+    <title>1saa | Sovereign Exchange & Federal Contractor</title>
     <style>
         :root {
             --white: #FFFFFF;
             --black: #000000;
-            --gold: #D4AF37; /* Royal Gold accent */
-            --silver: #C0C0C0; /* Sleek Silver accent */
-            --off-white: #FBFBFB;
-            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --gold: #D4AF37;
+            --silver: #C0C0C0;
+            --gov-gray: #F4F4F4;
+            --glass-gold: rgba(212, 175, 55, 0.15);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap');
 
         body {
             margin: 0; background: var(--white); color: var(--black);
-            font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased;
+            font-family: 'Inter', sans-serif; line-height: 1.6;
         }
 
-        /* --- NAVIGATION --- */
-        nav {
-            position: fixed; width: 100%; top: 0; padding: 30px 60px;
-            display: flex; justify-content: space-between; align-items: center;
-            background: rgba(255,255,255,0.95); z-index: 1000; box-sizing: border-box;
+        /* --- MINIMALIST GOV HEADER --- */
+        header {
+            position: sticky; top: 0; background: var(--white);
+            border-bottom: 1px solid #EEE; z-index: 1000;
+            padding: 10px 40px; display: flex; justify-content: space-between; align-items: center;
         }
-        .logo { font-family: 'Cinzel', serif; font-size: 2.2rem; font-weight: 700; color: var(--black); letter-spacing: 4px; }
-        .nav-links { display: flex; gap: 40px; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; }
+        .logo { font-family: 'Cinzel', serif; font-size: 1.8rem; font-weight: 700; letter-spacing: 3px; }
+        nav a {
+            text-decoration: none; color: var(--black); font-size: 0.7rem;
+            text-transform: uppercase; letter-spacing: 2px; margin-left: 25px;
+            transition: var(--transition); font-weight: 600;
+        }
+        nav a:hover { color: var(--gold); }
 
-        /* --- HERO --- */
+        /* --- COMPACT HERO --- */
         .hero {
-            height: 100vh; display: flex; flex-direction: column; 
-            justify-content: center; align-items: center; text-align: center; padding: 0 20px;
+            padding: 60px 40px; text-align: center; background: var(--white);
         }
-        .hero h1 { font-family: 'Cinzel', serif; font-size: 3.5rem; margin-bottom: 10px; }
-        .hero p { max-width: 600px; font-weight: 300; font-size: 1.1rem; opacity: 0.8; margin-bottom: 40px; }
-        .gold-line { width: 80px; height: 1px; background: var(--gold); margin-bottom: 20px; }
-
-        /* --- TIERS SECTION --- */
-        .tier-section { padding: 100px 60px; background: var(--off-white); }
-        .tier-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-
-        .tier-card {
-            background: var(--white); border: 1px solid #EAEAEA; padding: 50px 40px;
-            transition: var(--transition); position: relative; cursor: pointer;
-            display: flex; flex-direction: column;
+        .hero h1 { font-family: 'Cinzel', serif; font-size: 2.8rem; margin: 0 0 10px; }
+        .hero p { max-width: 800px; margin: 0 auto; font-size: 1rem; opacity: 0.7; font-weight: 300; }
+        .gov-banner { 
+            background: var(--gov-gray); font-size: 0.65rem; padding: 5px; 
+            text-transform: uppercase; letter-spacing: 3px; margin-bottom: 40px; 
         }
 
-        /* Subtle Silver/Gold Interactive Touches */
-        .tier-card:hover { border-color: var(--gold); transform: translateY(-10px); box-shadow: 0 20px 40px rgba(212, 175, 55, 0.08); }
-        .tier-card.silver:hover { border-color: var(--silver); box-shadow: 0 20px 40px rgba(192, 192, 192, 0.15); }
+        /* --- TIER GRID: GLASS & GOLD INTERACTION --- */
+        .grid-container {
+            padding: 40px; display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;
+        }
 
-        .totem { font-size: 2rem; margin-bottom: 25px; color: var(--black); }
-        .tier-card h3 { font-family: 'Cinzel', serif; font-size: 1.8rem; margin-bottom: 15px; }
-        .tier-price { color: var(--gold); font-weight: 600; font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 25px; border-bottom: 1px solid #F0F0F0; padding-bottom: 15px; }
+        .tier-tile {
+            border: 1px solid #EEE; padding: 40px; transition: var(--transition);
+            display: flex; flex-direction: column; position: relative; overflow: hidden;
+        }
+
+        /* Glass-Gold & Silver Interaction */
+        .tier-tile:hover { 
+            border-color: var(--gold); 
+            box-shadow: inset 0 0 20px var(--glass-gold), 0 10px 30px rgba(0,0,0,0.05);
+            transform: translateY(-5px);
+        }
+        .tier-tile.silver:hover { border-color: var(--silver); box-shadow: inset 0 0 20px rgba(192,192,192,0.1); }
+
+        .tier-tile h3 { font-family: 'Cinzel', serif; font-size: 1.5rem; margin: 0 0 10px; }
+        .tagline { color: var(--gold); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 20px; }
+        .pitch { font-size: 0.85rem; margin-bottom: 20px; font-style: italic; border-left: 2px solid #EEE; padding-left: 15px; }
         
-        /* Persuasive Pitch Text */
-        .pitch { font-size: 0.95rem; line-height: 1.6; margin-bottom: 25px; font-style: italic; opacity: 0.7; }
-        .benefits { list-style: none; padding: 0; font-size: 0.85rem; margin-bottom: 30px; }
-        .benefits li { margin-bottom: 12px; display: flex; align-items: flex-start; }
-        .benefits li::before { content: "—"; color: var(--gold); margin-right: 10px; }
+        .details { font-size: 0.8rem; list-style: none; padding: 0; margin-bottom: 30px; flex-grow: 1; }
+        .details li { margin-bottom: 8px; }
+        .details li b { color: var(--black); }
 
-        .btn {
-            margin-top: auto; padding: 15px; text-align: center; 
-            border: 1px solid var(--black); font-size: 0.8rem; 
-            text-transform: uppercase; letter-spacing: 2px; transition: var(--transition);
+        .action-btn {
+            border: 1px solid var(--black); padding: 12px; text-align: center;
+            font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px;
+            transition: var(--transition); cursor: pointer;
         }
-        .tier-card:hover .btn { background: var(--black); color: var(--white); }
+        .tier-tile:hover .action-btn { background: var(--black); color: var(--white); }
 
         /* --- FOOTER --- */
-        footer { padding: 80px 60px; text-align: center; border-top: 1px solid #EEE; }
-        .footer-tag { font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 5px; color: var(--silver); margin-bottom: 20px; }
-
-        @media (max-width: 768px) { nav { padding: 20px; } .hero h1 { font-size: 2.2rem; } }
+        footer {
+            background: #FAFAFA; padding: 60px 40px; border-top: 1px solid #EEE;
+            text-align: center; font-size: 0.75rem;
+        }
+        .footer-links { margin-bottom: 30px; }
+        .footer-links a { margin: 0 15px; text-decoration: none; color: var(--black); opacity: 0.6; }
+        .footer-links a:hover { opacity: 1; color: var(--gold); }
     </style>
 </head>
 <body>
 
-    <nav>
+    <div class="gov-banner">Official Sovereign Defense Affiliate | Project Apex-Procure 2026</div>
+
+    <header>
         <div class="logo">1saa</div>
-        <div class="nav-links">
-            <a href="#">Inventory</a>
-            <a href="#">Government Initiatives</a>
-            <a href="#">The Collective</a>
-            <a href="#" style="color: var(--gold)">Member Login</a>
-        </div>
-    </nav>
+        <nav>
+            <a href="inventory.html">Inventory</a>
+            <a href="initiatives.html">Initiatives</a>
+            <a href="collective.html">The Collective</a>
+            <a href="login.html" style="border: 1px solid #EEE; padding: 5px 15px;">Login</a>
+        </nav>
+    </header>
 
     <section class="hero">
-        <div class="gold-line"></div>
-        <h1>Integrity In Every Exchange</h1>
-        <p>A private firearm acquisition firm where discretion is the standard and professionalism is the product. We serve the few who bring respect to the tactical lifestyle.</p>
+        <h1>Private Acquisition. Public Trust.</h1>
+        <p>1saa bridges the gap between the elite tactical lifestyle and federal national security readiness. We bring respect, class, and high-integrity to the exchange of strategic assets.</p>
     </section>
 
-    <section class="tier-section">
-        <div class="tier-grid">
-            
-            <div class="tier-card">
-                <div class="totem">■</div>
-                <h3>Basic</h3>
-                <p class="tier-price">$49.95 / MO</p>
-                <p class="pitch">"The foundation of strategic readiness starts here."</p>
-                <ul class="benefits">
-                    <li>Gated Access: Ammunition-driven Marketplace</li>
-                    <li>Priority Alerts: "The Frequencies" Newsletter</li>
-                    <li>Event Access: Local Non-Profit Briefings</li>
-                    <li>Compliance: Digital Safety Waiver Storage</li>
-                </ul>
-                <div class="btn">Initiate Membership</div>
-            </div>
-
-            <div class="tier-card silver">
-                <div class="totem" style="color: var(--silver)">Ψ</div>
-                <h3>Silver Claw</h3>
-                <p class="tier-price" style="color: var(--silver)">$199.00 / MO</p>
-                <p class="pitch">"Refining the transition from enthusiast to professional."</p>
-                <ul class="benefits">
-                    <li>Private Acquisition: Professional Handgun Portfolios</li>
-                    <li>Strategic Energy: 10% Sustained Ammo Discounts</li>
-                    <li>Verified Status: SecurityaPP Integration</li>
-                    <li>Community: Entry to Mid-Level Networking Events</li>
-                </ul>
-                <div class="btn">Elevate Access</div>
-            </div>
-
-            <div class="tier-card">
-                <div class="totem" style="color: var(--gold)">⊕</div>
-                <h3>Golden Claw</h3>
-                <p class="tier-price">$550.00 / MO</p>
-                <p class="pitch">"Global sourcing for the serious collector and strategic partner."</p>
-                <ul class="benefits">
-                    <li><strong>Federal Initiative:</strong> Designated SBA Associate Status</li>
-                    <li>Bespoke Sourcing: Global Firearm Import Services</li>
-                    <li>Agent Access: Personal Acquisition Concierge</li>
-                    <li>The Ballroom: Quarterly High-Integrity Galas</li>
-                </ul>
-                <div class="btn">Partner With 1saa</div>
-            </div>
-
-            <div class="tier-card">
-                <div class="totem" style="color: var(--gold)">Λ</div>
-                <h3>Golden God</h3>
-                <p class="tier-price">$2,500.00 / MO</p>
-                <p class="pitch">"Absolute sovereignty. Absolute discretion. Absolute delivery."</p>
-                <ul class="benefits">
-                    <li><strong>Project Apex-Procure:</strong> National Security Affiliation</li>
-                    <li>White-Glove: Private Armored Asset Delivery</li>
-                    <li>Asset Priority: First-Right on rare tactical imports</li>
-                    <li>Integrity Consult: Private Security & Yacht Logistics</li>
-                </ul>
-                <div class="btn">Claim Sovereignty</div>
-            </div>
-
+    <div class="grid-container">
+        
+        <div class="tier-tile">
+            <div class="tagline">Foundation • Supply</div>
+            <h3>Basic</h3>
+            <p class="pitch">"Entry into the ammunition-driven marketplace for the disciplined citizen."</p>
+            <ul class="details">
+                <li><b>Market Access:</b> Gated portal for all calibers.</li>
+                <li><b>The Frequencies:</b> Monthly briefings on global tactical shifts.</li>
+                <li><b>Integrity Record:</b> Secure digital licensing vault.</li>
+            </ul>
+            <div class="action-btn">Apply for Access</div>
         </div>
-    </section>
+
+        <div class="tier-tile silver">
+            <div class="tagline" style="color:var(--silver)">Proficiency • Protocol</div>
+            <h3>Silver Claw</h3>
+            <p class="pitch">"The transition from enthusiast to professional partner begins with handguns."</p>
+            <ul class="details">
+                <li><b>Private Portfolio:</b> Direct acquisition of professional handgun assets.</li>
+                <li><b>Energy Discount:</b> 10% reduction on all bulk strategic energy (Ammo).</li>
+                <li><b>Protocol:</b> Mandatory CCW verification via SecurityaPP.</li>
+            </ul>
+            <div class="action-btn">Elevate Status</div>
+        </div>
+
+        <div class="tier-tile">
+            <div class="tagline">Global • Sourcing</div>
+            <h3>Golden Claw</h3>
+            <p class="pitch">"A strategic associate of 1GAA’s federal procurement wing."</p>
+            <ul class="details">
+                <li><b>SBA Associate:</b> Affiliated with 1GAA Federal Procurement data.</li>
+                <li><b>Global Sourcing:</b> Priority access to rare international tactical imports.</li>
+                <li><b>The Ballroom:</b> Quarterly invitations to high-net-worth networking galas.</li>
+            </ul>
+            <div class="action-btn">Engage as Associate</div>
+        </div>
+
+        <div class="tier-tile">
+            <div class="tagline">Sovereignty • Apex</div>
+            <h3>Golden God</h3>
+            <p class="pitch">"The ultimate character reference for our national security initiatives."</p>
+            <ul class="details">
+                <li><b>Apex-Procure:</b> Direct affiliation with Federal Defense Contracts.</li>
+                <li><b>White-Glove:</b> Private armored asset delivery to your location.</li>
+                <li><b>First-Right:</b> Immediate access to the most restricted strategic assets.</li>
+                <li><b>Lifestyle:</b> Marine-Mantle™ and elite security consultation.</li>
+            </ul>
+            <div class="action-btn">Claim Sovereignty</div>
+        </div>
+
+    </div>
 
     <footer>
-        <div class="footer-tag">Sovereign • Discreet • Integral</div>
-        <p style="font-size: 0.7rem; opacity: 0.5; letter-spacing: 1px;">&copy; 2026 1ST GUNS AND AMMO LLC | GLOBAL CITIZEN JOE SUBSIDIARY</p>
+        <div class="footer-links">
+            <a href="inventory.html">Inventory</a>
+            <a href="initiatives.html">Government Initiatives</a>
+            <a href="collective.html">The Collective</a>
+            <a href="login.html">Member Login</a>
+        </div>
+        <p style="letter-spacing: 2px; opacity: 0.5;">1ST GUNS AND AMMO LLC • GLOBAL CITIZEN JOE LLC • IBINGOD TRADE CO.</p>
+        <p style="font-size: 0.6rem; margin-top: 10px;">Managed via Vexzilla AITS SecurityaPP | NIST SP 800-171 Compliant</p>
     </footer>
 
 </body>
